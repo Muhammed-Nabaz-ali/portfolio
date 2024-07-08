@@ -241,19 +241,33 @@
       var $wrap = $("#portofolio-details");
       $wrap.addClass('uk-animation-toggle');
       UIkit.modal($el).show();
-
-      //show loading first
+  
+      // show loading first
       $wrap.html(
         '<div class="uk-position-center  uk-text-center">' +
           "<div data-uk-spinner></div> " +
         "</div>"
       ); 
-      
-      $.post($this.attr("href"), function(data) {
-        $wrap.html(data); 
-        $wrap.removeClass('uk-animation-toggle');
+  
+      $.ajax({
+        url: $this.attr("href"),
+        type: 'GET', // Change from POST to GET
+        success: function(data) {
+          $wrap.html(data); 
+          $wrap.removeClass('uk-animation-toggle');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          $wrap.html(
+            '<div class="uk-position-center uk-text-center">' +
+              "<p>Error loading project details. Please try again later.</p>" +
+            "</div>"
+          );
+          console.log("Error: " + textStatus, errorThrown);
+        }
       });
+  
       return false;
     });
   }
+  
 })(jQuery);
