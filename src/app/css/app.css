@@ -310,13 +310,31 @@ html, body {
   position: relative;
 }
 
+.uk-grid-collapse {
+  gap: 0; /* Remove space between grid items */
+}
+
+.yb-my-profile-img-container {
+  flex: 1 1 25%; /* Allows the container to be responsive */
+  min-width: 110px; /* Ensures the image doesn’t get too small */
+  max-width: 30%; /* Sets the max width on larger screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Ensure no extra margin */
+  padding: 0; /* Ensure no extra padding */
+}
+
 .yb-my-profile-img {
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   position: absolute;
-  left: 0;
+  left: 1;
   top: 0;
-  width: 50%;
+  width: 30%;
   height: 100%;
+  background-size: contain; /* Ensures the whole image is visible */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 959px) {
@@ -325,10 +343,16 @@ html, body {
     width: 100%;
     height: 400px;
   }
+
+  .yb-my-profile-img-container {
+    width: 100%; /* Full width on small screens */
+  }
 }
 
 .yb-my-profile-desc {
   position: relative;
+  margin: 0; /* Ensure no extra margin */
+  padding: 0; /* Ensure no extra padding */
 }
 
 .yb-my-profile-desc-top {
